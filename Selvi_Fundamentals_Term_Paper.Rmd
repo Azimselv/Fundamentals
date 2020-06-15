@@ -1,0 +1,1154 @@
+---
+title: "How do Coronavirus Measures impact the Stock market?"
+subtitle: "A Study of 13 Countries"
+author: "Azim Öykün Selvi"
+date: "15.06.2020"
+output:
+  pdf_document:
+    toc_depth: 2
+    keep_tex: true
+toc_depth: 2
+number_sections: true
+fontsize: 12pt
+header-includes: \usepackage{setspace}\onehalfspacing
+includes:
+    in_header: latex/header.tex
+    before_body: latex/before_body.tex
+    after_body: latex/after_body.tex
+---
+\pagenumbering{gobble}
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(fig.pos = "H")
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r figurename2, echo=FALSE, out.width = '90%', fig.align="center"}
+knitr::include_graphics("Alle Dateien (2)/Boerse.jpg")
+```
+
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+*Submitted to:* Dr. Christoph Kern
+
+*Course:* Seminar Fundamentals of Computing and Data Display, Spring/Summer Term 2020
+
+*Institution:* University of Mannheim
+
+
+
+\newpage
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+
+# 1	Introduction 
+The virus SARS-CoV-2 (coronavirus), which originated in Wuhan (China) is contagious in humans and sparked a pandemic in early 2020 (https://www.bundesregierung.de/breg-de/themen/coronavirus/informationen-zum-coronavirus-1734932, retrieved at 01.06.2020). The coronavirus is easily transmittable and even potentially deadly, especially for people with pre-existing illnesses. Therefore, many countries instituted various measures to minimize the spread of the virus. These included: Closing of schools, universities, national borders for foreigners, as well as travel bans, suspension of major events, curfews and lockdowns (https://www.bbc.com/news/world-51737226, retrieved at 01.06.2020). The COVID-19 pandemic did not only result in more than 300.000 deaths (worldometers.info/coronavirus, retrieved at 01.06.2020), but it also started a global economic recession (Bofinger et al, 2020; Fernandes, 2020). Global supply chains were disrupted, and companies produced less, due to quarantine measures. Furthermore, demand for “social activites” such as going to restaurants, museums, events and tourism declined as well (Bofinger et al, 2020; Fernandes, 2020). Many of those supply and demand “shocks” are directly attributable to measures taken to combat the spread of the virus. 
+In this paper, I will not judge the effectiveness of the measures regarding the spread of the coronavirus. I will also not compare the health of many people with the overall economy. I will only analyze how these measures affected a subset of the economy, more precisely the stock market of each country. The stock market is usually an index of the biggest companies of each specific country. For instance, the german stock index, the DAX, which stands for “Deutscher Aktienindex”, represents the stock prices of the 30 biggest german companies. There are already some studies which analyzed the consequences of the coronavirus on the stock market (Fernandes, 2020; Albulescu, 2020). I will specifically analyze if the measures which were taken by the federal governments of several countries to combat the spread of the virus, changed the value of the stock market of the respective country. I will derive my theory and hypothesis largely on the efficient-market hypothesis (Fama, 1970), which I will explain in the Theory section of this paper. Even though, this paper analyzes the stock market, this study has a sociological background. Many people invest in stock indices as part of their pension plan, especially in liberal welfare states such as the United States, Great Britain or Australia (Deutsches Aktieninstitut, 2019). There are differing models of pension models in each country, for instance state sponsored obligatory stock market contributions vs. non-obligatory models. This means, that the “performance” of the stock market directly influences the pensions of the people who are invested in the stock market. Therefore, the causal link is as follows: The coronavirus, which constitutes a health “problem”, leads governments to impose measures, which possibly influence the stock market. The stock market is a subset of the national economy, but since many people rely on the stock market for their pensions, this could be considered a sociological problem. 
+This paper is organized as follows: Section 2 provides a review of the efficient market theory and possible impacts from the coronavirus on the economy. In this section I develop my theoretical argument and build my hypothesis. In Section 3 I describe the data gathering process as well as the mean adjusted model, which I use to analyze if there are changes in the stock market. The subsequent Section 4 is used to show the results of my analysis and discuss them. Finally, I discuss and conclude this paper in Section 5.
+
+
+# 2	Theoretical Background
+In the introduction I mentioned the “efficient-market-hypothesis” as my primary basis of my Theory. The EMH is a prominent theory in financial economics, which states that asset prices, such as stock prices, reflect all available public information (Fama, 1970; Kommer, 2007). According to the EMH, the financial markets are “efficient” in pricing in new information to the stock prices, which makes it impossible for individuals to profit using new information. One key aspect of the EMH is the assumption of the “rationality of the market”. This means, that not every individual market participant acts rational, but rather the market as a whole. Rationality in this context is defined as the maximization of benefits. Therefore, the stock prices reflect the best estimate of the real value of the respective stock. Eugene Fama (1970) tested the EMH and concluded: “For the purposes of most investors the efficient markets model seems a good first (and second) approximation to reality. In short, the evidence in support of the efficient markets model is extensive, and (somewhat uniquely in economics) contradictory evidence is sparse” (p. 416). 
+According to the Kiel Institute for the World Economy (2020) the coronavirus and the measures taken to slow the spread of the virus, can severely damage the economy. The stock markets are also affected by the coronavirus (Gormsen & Koijen, 2020; Albulescu, 2020). The major stock market indices in Europe already went down, since the first quarantine measures were taken in Italy in February (Boysen-Hogrefe et al. 2020). Boysen-Hogrefe et al. explain this phenomenon by assuming that investors expected economic downturn due to the quarantine measures of the Italian government. Other measures, like lockdowns are also responsible for sinking the expectations of investors about economic growth. These measures lead to less supply for products or services and on the other hand, consumers are restricted to consume these products or services. This leads to a cycle of lower profits for companies who are forced to lay off employees or limit their working hours, who then in turn can consume less due to less income (Kocher & Weyerstrauß, 2020; Bofinger et al.,2020). Bofinger et al. (2020) give the example of “social consumptions” such as tourism. The tourism sector is not only damaged because people who do not want to travel to countries who are severely affected by the coronavirus, but also due to lockdown measures which largely restrict people to travel. Financial support from governments for companies who are strongly influenced by the coronavirus and the measures are expected to only solve the problem temporarily (Boysen-Hogrefe et al.,2020).
+
+Following the last two paragraphs I come to the following theory: Since the measures to slow the spread of the coronavirus can have negative consequences on the economy, the stock market prices reflect those pessimistic views. According to the efficient-market-hypothesis, the market would price-in the government announcements of these measures in the stock prices. This means, that the stock market price should be influenced for every measure the government takes. Therefore, my first hypothesis is as follows:
+*H1*: The price for the stock market indices decrease after every major announcement to impose measures to stop the spread of the virus. 
+I also theorize that measures which were taken early after the first Coronavirus case can have a different effect on the economy, than measures which were taken late. This is because, presumably the spread can be stopped early and therefore, it may be possible to ease the restrictions early. This would have a lower impact to the economy than a presumably longer lockdown measure for example. So, my second hypothesis is as follows:
+*H2*: The value of the stock market indices decreases weaker, if a specific measure was taken sooner, than a measurement which was enacted later after the first coronavirus case. 
+
+# 3	Data & Methods
+
+## 3.1	Data gathering
+I used Rstudio as my statistical/programming software. For my analysis, I needed data on the stock indices of every country which I wanted to include, as well as data about the measures taken by every respective country and the date of the first case of Coronavirus patient in every country. I especially needed the exact date, of the introduction of the measures. The source for my data regarding the stock indices was finance.yahoo.com (retrieved at 15.05.2020). I was able to download daily value changes of stock indices on an excel file. The selection of countries was limited by the availability of the stock indices which I could use. The list of countries whose stock indices data were available on finance.yahoo.com were as follows: (Australia, France, Germany, China, USA, India, Israel, Japan, Russia, Sweden, South Korea, Spain).
+
+Since there were no official datasets about the measures of every individual country, I used Web Scraping to gather my data. My main resource were two Wikipedia pages which document travel bans, quarantine and lockdown measures of every country. To scrape data from Wikipedia I used the R packages “XML” and “xml2”. The data on lockdowns for every country was already in a table format on https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_lockdowns. Therefore, I only needed to do some minor data preparations and cleaning with the scraped data.
+```{r eval=FALSE, include=FALSE}
+
+install.packages("factoextra")
+install.packages("RCurl")
+install.packages("XML")
+install.packages("quantmod")
+install.packages("varhandle")
+install.packages("xml2")
+install.packages("rvest")
+install.packages("tidyverse")
+install.packages("magrittr")
+install.packages("ggplot2")
+install.packages("dplyr")
+install.packages("kableExtra")
+install.packages("knitr")
+```
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(XML)
+library(xml2)
+library(RCurl)
+library(rvest)
+library(tidyverse)
+library(magrittr)
+library(factoextra)
+library(quantmod)
+library(ggplot2)
+library(dplyr)
+library(varhandle)
+library(knitr)
+library(kableExtra)
+
+getwd()
+```
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+lockdowns <- read_html("https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_lockdowns")
+#load("~/Data Science/Lockdown_table.RData") ## I saved the tables which I scraped from Wikipedia, because the Wikipedia page may change over time and the subsequent code would not work accurately.
+tables <- html_table(lockdowns,fill = TRUE)
+locks <- tables[3]
+lockdown <- locks[[1]]
+colnames(lockdown) = lockdown[1, ] 
+lockdown = lockdown[-1, ]
+lockdown <- lockdown[,-2]
+lockdown <- lockdown[,c(-3,-4)]
+lockdown$`Start date` <- gsub("\\[.*?\\]", "", lockdown$`Start date`)
+colnames(lockdown) <- c("Countries","Lockdown")
+lockdown <- lockdown[-114,]
+```
+
+According to Wikipedia, these lockdowns are defined as “the shutdown of parts of the economy,[167] due to non-pharmaceutical anti-pandemic measures and are enforceable by law like: Closing of schools and kindergartens, Closing of non-essential shops (shops and stores apart from food, doctors and drug stores), Closing of non-essential production, Cancellation of recreational venues and closing of public places, Curfews, Stay-at-home orders and total movement control”.  However, to work with the data which document the travel ban and quarantine measure I had to use text mining methods, because the data was not in a table format. The information about the measures which were taken by governments n the following website https://en.wikipedia.org/wiki/Travel_restrictions_related_to_the_COVID-19_pandemic, was structured as follows: There was a section on global travel bans, one on partial travel bans and one section on quarantine measures. Every country who enacted one of those measures was mentioned in a short paragraph in which the date of the introduction of the measure was included. Furthermore, I cleaned the data after I gathered every single measure. 
+```{r message=FALSE, warning=FALSE, include=FALSE}
+#https://en.wikipedia.org/wiki/Travel_restrictions_related_to_the_COVID-19_pandemic
+#14.05.2020
+#travel2 <- read_html("https://en.wikipedia.org/wiki/Travel_restrictions_related_to_the_COVID-19_pandemic")
+
+#travelnodes <- travel2 %>%
+ # html_nodes("ul") %>% 
+ # html_text() %>% 
+#  strsplit(split = "\n") %>%
+ ## unlist() %>%
+  #.[. != ""]
+
+## I saved the nodes which I scraped from Wikipedia, because the Wikipedia page may change over time and the subsequent code would not work accurately.
+load("Alle Dateien (2)/Travelnodes.RData")
+countries <- c("Germany","Japan","South Korea","China","Sweden",
+               "France","United States","Australia","India",
+               "Russia","Spain","United Kingdom","Israel")
+
+numbers <- grep(paste(countries, collapse="|"), travelnodes)
+
+China_global <- travelnodes[116]
+India_global <- travelnodes[118]
+Israel_global <- travelnodes[120]
+France_global <- travelnodes[191]
+Spain_global <- travelnodes[199]
+Russia_global <- travelnodes[208]
+Australia_global <- travelnodes[230]
+Germany_partial <- travelnodes[243]
+Japan_partial <- travelnodes[245]
+South_Korea_partial <- travelnodes[249]
+Sweden_partial <- travelnodes[250]
+US_partial <- travelnodes[251]
+Australia_quarantine <- travelnodes[252]
+Israel_quarantine <- travelnodes[260]
+South_Korea_quarantine <- travelnodes[266]
+
+travel <- data.frame()
+names <- c("Country","Global_Travel_Ban","Partial_Travel_Ban","Quarantine")
+for (k in names) travel[[k]] <- as.character()
+travel[1:13,1] <- countries
+travel[4,2] <- China_global
+travel[9,2] <- India_global
+travel[13,2] <- Israel_global
+travel[6,2] <- France_global
+travel[11,2] <- Spain_global
+travel[10,2] <- Russia_global
+travel[8,2] <- Australia_global
+travel[1,3] <- Germany_partial
+travel[2,3] <- Japan_partial
+travel[3,3] <- South_Korea_partial
+travel[5,3] <- Sweden_partial
+travel[7,3] <- US_partial
+travel[8,4] <- Australia_quarantine 
+travel[13,4] <- Israel_quarantine
+travel[3,4] <- South_Korea_quarantine
+
+travel$Global_Travel_Ban <- gsub("\\[.*?\\]", "", travel$Global_Travel_Ban)
+travel[4,2] <- word(travel[4,2], 3,5)
+travel[4,2] <- gsub("March 2020,", "3 2020", travel[4,2])
+travel[9,2] <- word(travel[9,2], 10,12)
+travel[9,2] <- gsub("March 2020", "3 2020", travel[9,2])
+travel[13,2] <- word(travel[13,2], 3,5)
+travel[13,2] <- gsub("March 2020,", "3 2020", travel[13,2])
+travel[11,2] <- word(travel[11,2], 7,8)
+travel[11,2] <- gsub("17 March.", "17 3 2020", travel[11,2])
+travel[10,2] <- word(travel[10,2], 10,11)
+travel[10,2] <- gsub("March", "3 2020", travel[10,2])
+travel[6,2] <- word(travel[6,2], 10,11)
+travel[6,2] <- gsub("6 April.", "6 4 2020", travel[6,2])
+travel[8,2] <- word(travel[8,2], 13,14)
+travel[8,2] <- gsub("March 20.", "20 3 2020", travel[8,2])
+
+
+#jcase <- read_html("https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Japan")
+#load("~/Data Science/Jcase.RData")
+#jnodes <- jcase %>%
+ # html_nodes("p") %>% 
+  #html_text() %>% 
+  #strsplit(split = "\n") %>%
+  #unlist() %>%
+  #.[. != ""]
+## I saved the nodes which I scraped from Wikipedia, because the Wikipedia page may change over time and the subsequent code would not work accurately.
+load("Alle Dateien (2)/Jnodes.RData")
+words2 <- c("closed","expanded","suspended","prohibited","imposed","announced",
+            "closure","prevent")
+
+grep(paste(words2, collapse="|"), jnodes)
+travel_ban <- jnodes[25]
+travel[1,3] <- word(travel[1,3], 3,5)
+travel[1,3] <- gsub("March", "3", travel[1,3])
+travel[2,3] <- travel_ban
+travel[2,3] <- word(travel[2,3], 2,3)
+travel[2,3] <- gsub("February,", "2 2020", travel[2,3])
+travel[3,3] <- word(travel[3,3], 4,6)
+travel[3,3] <- gsub("April 2020,", "4 2020", travel[3,3])
+travel[5,3] <- word(travel[5,3], 3,5)
+travel[5,3] <- gsub("March", "3", travel[5,3])
+travel[7,3] <- word(travel[7,3], 4,6)
+travel[7,3] <- gsub("January 2020,", "1 2020", travel[7,3])
+
+travel[3,4] <- word(travel[3,4], 4,6)
+travel[3,4] <- gsub("April 2020,", "4 2020", travel[3,4])
+travel[8,4] <- word(travel[8,4], 44,46)
+travel[8,4] <- gsub("March 2020,", "3 2020", travel[8,4])
+travel[13,4] <- word(travel[13,4], 3,4)
+travel[13,4] <- gsub("March,", "3 2020", travel[13,4])
+
+travel$Global_Travel_Ban <- as.Date(travel$Global_Travel_Ban ,format="%d %m %Y")
+travel$Partial_Travel_Ban <- as.Date(travel$Partial_Travel_Ban ,format="%d %m %Y")
+travel$Quarantine <- as.Date(travel$Quarantine ,format="%d %m %Y")
+```
+
+Lastly, I also gathered the dates of the first coronavirus cases of the following website https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory. Here, I also only needed to do some minor data preparations and cleaning with the scraped data.
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+fcase <- read_html("https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory")
+
+tables <- html_table(fcase, fill = TRUE)
+cases <- tables[[4]]
+cases.new <- cases %>% 
+  mutate(`Country or territory` = strsplit(as.character(`Country or territory`), " • ")) %>% 
+  unnest(`Country or territory`)
+
+cases.new <- cases.new %>% 
+  rename(
+    First_case = Date,
+    Country = `Country or territory`
+  )
+
+cases.new$First_case <- paste0(cases.new$First_case, " 2020")
+cases.new$First_case <- gsub("December 2020", "December 2019", cases.new$First_case)
+cases.new$First_case <- gsub("December", "12", cases.new$First_case)
+cases.new$First_case <- gsub("January", "1", cases.new$First_case)
+cases.new$First_case <- gsub("February", "2", cases.new$First_case)
+cases.new$First_case <- gsub("March", "3", cases.new$First_case)
+cases.new$First_case <- gsub("April", "4", cases.new$First_case)
+cases.new$First_case <- gsub("May", "5", cases.new$First_case)
+cases.new$Country <- gsub("\\[.*?\\]", "", cases.new$Country)
+cases.new$First_case <- as.Date(cases.new$First_case ,format="%d %m %Y")
+
+
+```
+
+Table 1 displays all the discussed information at once
+```{r echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+Corona <- cases.new %>% inner_join(travel, by = c("Country" = "Country"))
+Corona <- Corona %>% left_join(lockdown, by = c("Country" = "Countries"))
+Corona <- Corona[c(-6:-14,-18),] 
+Corona2 <- Corona %>% select(-First_case)
+
+
+kable(Corona2, "latex", caption = "Coronavirus measures")
+```
+
+## 3.2	Methods
+To analyze if the measurements had an influence on the stock market prices, I had to use a method which is common in event studies, the mean—adjusted model. In the following I will briefly explain the model and define specific terms which are widely known for event studies, but not necessarily for sociologists. My explanation is based on the contributions of Brown & Warner (1985), Peterson (1989) and Cable & Holland (1999). An event study is typically used to measure the effect of a specific announcement of a company, such as earnings announcement or merger (Cable & Holland, 1999). The underlying assumption for event studies is that the stock market is efficient (I explained the assumption in the second section of this paper), because only if the stock market is efficient, one can measure these changes accurately. Usually there are two time periods in event study, the estimation period and the event period (Peterson, 1989). The estimation period is used to determine the normal behavior of the stock price and is usually calculated with stock prices before the event happened. The “event”, in my case the implementation of the measures against the spread of the coronavirus, is within the event period. For the mean-adjusted model I first calculated the “abnormal” prices for every day in the estimation period like it is described by Brown & Warner (1985). In my case, I used Day -30 until Day -3 before the event (Event Day is Day 0) to calculate the abnormal prices. This is calculated in the following way: 
+$$ A_i,_t = R_i,_t – R_i$$
+
+where *Ri*, is the simple average of the stock market index i’s daily price in the (- 30, - 3) estimation period. Whereas *Ri,t* is the the stock price of the stock market index i at day t. Therefore, Ai,t represents the abnormal prices for stock market index i and every day t. The same is done for the event period which ranges from Day -2 to Day +2 including Day 0, the event day. According to Peterson (1989) it is wise to extend the event period to more than one day, because it could be possible, that specific information reaches the market later or even earlier than on the event day. As he puts it “A corporation may release information one day and the financial press may report this information the following day; it is sometimes unclear on which day the information reaches the market because it generally is not known whether market participants had the information during market trading hours on the day the information is released by the corporation” (p. 37). To calculate the test statistic for the abnormal stock prices of the event period I will have to calculate the estimated standard deviation for the abnormal stock prices of the estimation period. This is calculated as follows:
+$$ S(A_t) = \sqrt{(\sum(A_2-ATT_2)^2)/27)}$$
+where *A2* are the abnormal prices in the estimation period and *ATT2* is the mean of the abnormal prices in the estimation period. Lastly, I must divide the mean of the abnormal stock prices for the event period with the estimated standard deviation to get the t-test statistic. This process is done for every measure which were taken from the countries which I selected with the corresponding stock market index. In some cases, I had to adjust the estimation period, event period days  or even the event day, because of missing data points. I used the mean-adjusted model to test my first hypothesis. The Null-Hypothesis in all cases are 
+*H0* >= 0
+whereas the alternative Hypothesis is 
+*H1* < 0.
+To test my second hypothesis, I first calculate the difference in days between the first coronavirus case in each country with the respective date of the implantation of each measure. Then I will run an OLS Regression with the difference in days as the independent variable and the abnormal stock price changes as the dependent variable. In this case, my second hypothesis would be falsified if there would not exist a significant positive effect between difference in days between first coronavirus case and measure taken and change in stock market price for that respective measure. 
+
+# 4 Results
+First, I want to visualize the dates of the implementation of the measures for each respective stock market index. Every stock market index in the time period from early January to mid May 2020 has one major trait in common. There is one great downfall of the Stock market price in Mid-March. This seems to be the overall stock market crash due to the Coronavirus, but it does not seem that this is related to the measures to stop the spread. In some cases, these measures were taken before the Crash (Dow Jones_Travel_Ban), but many of the measures were taken after the big downfall. In some cases, it even seems to be the opposite effect, which I expected, namely that after the measures were implemented, the stock market prices even increased again. For example, after the lockdown was introduced in Australia, the quarantine measure was introduced in South Korea or the travel ban in Russia or India all the respective stock market indices increased. But this big downfall could also have another unwanted effect for the purpose of this study. Because I use the mean-adjusted model, I rely upon the idea that the days before the event, where I measure the mean of the stock market price, is a good comparison to the event period, because it measures the “normal” stock prices. However, if there is a big downfall of the stock market index in the estimation period, the mean for the estimation period is likely distorted. 
+
+```{r fig.cap="South Korea Quarantine \\label{fig:plot}", echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+
+### South Korea
+South_Korea <- read.table("Alle Dateien (2)/Südkorea.csv", header = TRUE, sep = ",",stringsAsFactors=FALSE)
+
+Sok <- South_Korea[150:248,]
+n <- nrow(Sok) 
+Sok$Close <- as.numeric(Sok$Close)
+
+Change <- log(Sok[2:n, 5]) - log(Sok[1:(n - 1),5])
+Change <- format(round(Change, 5), nsmall = 5)
+Change <- as.numeric(Change)
+Sok$Change <- c(NA,Change)
+
+Sok$Date <- as.Date(Sok$Date)
+
+ggplot(Sok, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") + theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Sok, Date == "2020-04-01"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+```
+
+```{r fig.cap="Dow Jones Travel Ban \\label{fig:plot}", echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+### USA
+Dowjones <- read.table("Alle Dateien (2)/DOWJONES.csv", header = TRUE, sep = ",",stringsAsFactors=FALSE)
+
+Dow <- Dowjones[150:253,]
+n <- nrow(Dow) 
+Dow$Close <- as.numeric(Dow$Close)
+
+Change <- log(Dow[2:n, 5]) - log(Dow[1:(n - 1),5])
+Change <- format(round(Change, 5), nsmall = 5)
+Change <- as.numeric(Change)
+Dow$Change <- c(NA,Change)
+
+Dow$Date <- as.Date(Dow$Date)
+
+ggplot(Dow, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Dow, Date == "2020-01-31"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+```
+
+```{r fig.cap="Australia Lockdown \\label{fig:plot}", echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+### Australia
+Australia <- read.table("Alle Dateien (2)/Australien.csv", header = TRUE, sep = ",",stringsAsFactors=FALSE)
+
+Aus <- Australia[150:256,]
+n <- nrow(Aus) 
+Aus$Close <- as.numeric(Aus$Close)
+
+Change <- log(Aus[2:n, 5]) - log(Aus[1:(n - 1),5])
+Change <- format(round(Change, 5), nsmall = 5)
+Change <- as.numeric(Change)
+Aus$Change <- c(NA,Change)
+
+Aus$Date <- as.Date(Aus$Date)
+
+ggplot(Aus, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") + theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Aus, Date == "2020-03-23"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+```
+
+```{r fig.cap="India Lockdown \\label{fig:plot}", echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+## India
+India <- read.table("Alle Dateien (2)/Indien.csv", header = TRUE, sep = ",",stringsAsFactors=FALSE)
+
+Ind <- India[150:246,]
+n <- nrow(Ind) 
+Ind$Close <- as.numeric(Ind$Close)
+
+Change <- log(Ind[2:n, 5]) - log(Ind[1:(n - 1),5])
+Change <- format(round(Change, 5), nsmall = 5)
+Change <- as.numeric(Change)
+Ind$Change <- c(NA,Change)
+
+Ind$Date <- as.Date(Ind$Date)
+
+ggplot(Ind, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") + theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Ind, Date == "2020-03-25"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+```
+
+
+``` {r fig.cap="Russia Travel Ban \\label{fig:plot}", echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+## Russia
+Russia <- read.table("Alle Dateien (2)/Russia.csv", header = TRUE, sep = ",",stringsAsFactors=FALSE)
+
+Rus <- Russia[160:253,]
+n <- nrow(Rus) 
+Rus$Close <- as.numeric(Rus$Close)
+
+Change <- log(Rus[2:n, 5]) - log(Rus[1:(n - 1),5])
+Change <- format(round(Change, 5), nsmall = 5)
+Change <- as.numeric(Change)
+Rus$Change <- c(NA,Change)
+
+Rus$Date <- as.Date(Rus$Date)
+
+ggplot(Rus, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Rus, Date == "2020-03-18"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+```
+\newpage
+
+This brings me to the statistical results from the mean-adjusted model. Contrary to my hypothesis there are nearly no statistically significant changes in the price of the stock market indices after the implementation of the measures. Only after the quarantine measure in Israel, does the stock market price decrease significantly. This clearly indicates that my first hypothesis is falsified and consequently, it would be pointless to try to prove my second hypothesis. Because I could not prove nearly no statistically significant change in stock market indices, I regard my second hypothesis as falsified too.
+
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+## Germany
+##Travel_Ban
+Dayzero <- grep(paste("2020-03-16", collapse="|"), DAX1$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(DAX1[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (DAX1[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATger1 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- DAX1[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)          ## Mean standard deviation
+testg1 <- ATger1/SAT                                      ## Test statistic
+
+##Lockdown
+Dayzero <- grep(paste("2020-03-23", collapse="|"), DAX1$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(DAX1[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (DAX1[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATger2 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- DAX1[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testg2 <- ATger2/SAT                                           ## Test statistic
+
+
+## China
+
+##Global Travel Ban
+Dayzero <- grep(paste("2020-03-30", collapse="|"), China1$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(China1[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (China1[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATchi1 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- China1[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)          ## Mean standard deviation
+testc1 <- ATchi1/SAT                                      ## Test statistic
+
+### France
+
+### Lockdown
+Dayzero <- grep(paste("2020-03-17", collapse="|"), France1$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(France1[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (France1[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATfra1 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- France1[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testf1 <- ATfra1/SAT  
+
+### Global Travel Ban
+Dayzero <- grep(paste("2020-04-06", collapse="|"), France1$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(France1[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (France1[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATfra2 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- France1[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testf2 <- ATfra2/SAT  
+
+
+### Japan
+
+### Travel Ban
+
+Dayzero <- grep(paste("2020-02-03", collapse="|"), Nikkei$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Nikkei[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Nikkei[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATjap1 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Nikkei[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testf2 <- ATjap1/SAT
+
+
+### South Korea
+
+### Quarantine
+Dayzero <- grep(paste("2020-04-01", collapse="|"), Sok$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Sok[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Sok[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATsok1 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Sok[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/27                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/28)               ## Mean standard deviation
+testso1 <- ATsok1/SAT
+
+### Travel Ban
+Dayzero <- grep(paste("2020-04-13", collapse="|"), Sok$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Sok[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Sok[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATsok2 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Sok[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testso2 <- ATsok2/SAT
+
+
+### USA
+
+### Travel Ban
+Dayzero <- grep(paste("2020-01-31", collapse="|"), Dow$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Dow[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Dow[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATusa1 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Dow[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testus1 <- ATusa1/SAT
+
+### Lockdown
+Dayzero <- grep(paste("2020-03-19", collapse="|"), Dow$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Dow[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Dow[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATusa2 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Dow[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testus2 <- ATusa2/SAT
+
+### Australia
+
+## Quarantine
+Dayzero <- grep(paste("2020-03-16", collapse="|"), Aus$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Aus[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Aus[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATaus1 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Aus[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testaus1 <- ATaus1/SAT
+
+
+## Travel_Ban
+Dayzero <- grep(paste("2020-03-20", collapse="|"), Aus$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Aus[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Aus[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+AT <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Aus[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testaus2 <- AT/SAT
+
+## Quarantine
+Dayzero <- grep(paste("2020-03-23", collapse="|"), Aus$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Aus[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Aus[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+AT <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Aus[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)*28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/28)               ## Mean standard deviation
+testaus3 <- AT/SAT
+
+## India
+
+## Travel_Ban
+Dayzero <- grep(paste("2020-03-23", collapse="|"), Ind$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Ind[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Ind[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATind1 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Ind[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testind1 <- ATind1/SAT
+
+## Lockdown
+Dayzero <- grep(paste("2020-03-25", collapse="|"), Ind$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Ind[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Ind[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATind2 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Ind[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testind2 <- ATind2/SAT
+
+## Russia
+
+## Travel_ban
+Dayzero <- grep(paste("2020-03-18", collapse="|"), Rus$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Rus[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Rus[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATrus1 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Rus[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testrus1 <- ATrus1/SAT
+
+## Lockdown
+Dayzero <- grep(paste("2020-03-30", collapse="|"), Rus$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Rus[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Rus[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATrus2 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Rus[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testrus2 <- ATrus2/SAT
+
+### Spain
+
+## Travel_ban
+Dayzero <- grep(paste("2020-03-17", collapse="|"), Sp$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Sp[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Sp[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATspa1 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Sp[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testsp1 <- ATspa1/SAT
+
+## Lockdown
+Dayzero <- grep(paste("2020-03-16", collapse="|"), Sp$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Sp[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Sp[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATspa2 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Sp[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testsp2 <- ATspa2/SAT
+
+
+### Sweden
+
+
+### Travel Ban
+Dayzero <- grep(paste("2020-03-16", collapse="|"), Swe$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Swe[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Swe[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATswe1 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Swe[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testswe <- ATswe1/SAT
+
+
+### Israel
+
+### Quarantine
+Dayzero <- grep(paste("2020-03-09", collapse="|"), Isr$Date)
+First_day_estim <- Dayzero - 15 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Swe[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Isr[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATisr1 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 13)
+A2 <- Isr[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/13                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,13)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/12)               ## Mean standard deviation
+testisr1 <- ATisr1/SAT
+
+## Travel Ban
+Dayzero <- grep(paste("2020-03-12", collapse="|"), Isr$Date)
+First_day_estim <- Dayzero - 18 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 2
+Estimation_mean <- mean(Swe[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,5) ##Ri
+AR <- (Isr[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATisr2 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 16)
+A2 <- Isr[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/16                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,16)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/15)               ## Mean standard deviation
+testisr2 <- ATisr2/SAT
+
+## Lockdown
+Dayzero <- grep(paste("2020-04-02", collapse="|"), Isr$Date)
+First_day_estim <- Dayzero - 30 
+Last_day_estim <- Dayzero - 3 
+First_day_event <- Dayzero - 2
+Last_day_event <- Dayzero + 0
+Estimation_mean <- mean(Swe[First_day_estim:Last_day_estim,8]) ##Mean of Estimation Period
+mean_est <- rep(Estimation_mean,3) ##Ri
+AR <- (Isr[First_day_event:Last_day_event,8] - mean_est) ## Abnormal Returns in Event period
+ATisr3 <- sum(AR)/5                                       ## Mean of the Abnormal Returns
+
+mean_A <- rep(Estimation_mean, 28)
+A2 <- Isr[First_day_estim:Last_day_estim,8] -mean_A ## Abnormal returns in Estimation Period
+AT2 <- sum(A2)/28                                ## Mean of abnormal retunrs in Estimation Period
+ATT2 <- rep(AT2,28)                                  
+
+SAT <- sqrt((sum((A2-ATT2)^2))/27)               ## Mean standard deviation
+testisr3 <- ATisr3/SAT
+
+```
+
+# 5 Discussion
+In this study, I wanted to analyze the impact of measures taken by different countries to slow down the spread of the coronavirus on the respective stock market indices. I used the efficient-market hypothesis as my theoretical explanation why I thought that the stock market would change due to the measures. Contrary to my expectations the stock market indices largely did not change significantly which falsified my hypothesis. This result can have multiple explanations: First, every stock market index I analyzed had already a pretty strong downfall before the most measures were enacted which may distorted the mean-adjusted model. This may be the due to the fact that investors may already expected that governments would impose strict regulations which harm the economy. Second, the stock market may also be influenced by other factors than just the measurements. This is also one of the main limitations of this study. I also included measures regarding the coronavirus in my study, but there may also be other measures taken by the governments which influenced the stock market indices. Furthermore, the stock market is not a “real” representation of the economy, since the stock market price is also heavily influenced by speculations of investors (Kommer, 2007). Lastly, I still regard this study as informative, because the results still deliver some information about the direct impact of the measures on the stock market indices. Namely, that the stock market index does not significantly change after potentially harmful policy implementations. Surely, there will be more studies which focus on the economic impact of the coronavirus, maybe even regarding stock market indices. This paper could be seen as a first approach to this topic.
+
+\newpage
+
+# References
+
+Albulescu, C. (2020). Coronavirus and financial volatility: 40 days of fasting and fear. *arXiv preprint arXiv:2003.04005.*
+
+Bofinger, P., Dullien, S., Felbermayr, G., Fuest, C., Hüther, M., Südekum, J., & di Mauro, B. W. (2020). Wirtschaftliche Implikationen der Corona-Krise und wirtschaftspolitische Maßnahmen. *Wirtschaftsdienst, 2020(4)*, 259-265.
+
+Boysen-Hogrefe, J., Fiedler, S., Groll, D., Kooths, S., & Stolzenburg, U. (2020). Konjunktur im Euroraum im Frühjahr 2020-Euroraum: Corona-Virus zwingt Währungsunion in die Rezession.
+
+Brown, S. J., & Warner, J. B. (1985). Using daily stock returns: The case of event studies. *Journal of financial economics, 14(1)*, 3-31.
+
+Cable, J., & Holland, K. (1999). Modelling normal returns in event studies: a model-selection approach and pilot study. *The European Journal of Finance, 5(4)*, 331-341.
+
+Coronavirus: What measures are countries taking to stop it? (2020). *BBC*. Retrieved from https://www.bbc.com/news/world-51737226 [01.06.2020]
+
+Covid-19 Coronavirus Pandemic. (2020). *Worldometers*. Retrived from worldometers.info/coronavirus [01.06.2020]
+
+Fama, E. F. (1991). Efficient capital markets: II. *The journal of finance, 46(5)*
+, 1575-1617.
+
+Fernandes, N. (2020). Economic effects of coronavirus outbreak (COVID-19) on the world economy. *Available at SSRN 3557504.*
+
+Fuest, C., Hainz, C., Meier, V., Werding, M., Corneo, G., Grüner, H. P., ... & Bortenlänger, C. (2019). Staatsfonds für eine effiziente Altersvorsorge: Welche innovativen Lösungen sind möglich?. *ifo Schnelldienst, 72(14)*, 3-24.
+
+Gormsen, N. J., & Koijen, R. S. (2020). Coronavirus: Impact on stock prices and growth expectations. University of Chicago, *Becker Friedman Institute for Economics Working Paper*, (2020-22).
+
+Informationen über das Coronavirus. (2020). *Bundesregierung*. Retrieved from https://www.bundesregierung.de/breg-de/themen/coronavirus/informationen-zum-coronavirus-1734932 [01.06.2020]
+
+Kocher, M. G., & Weyerstrass, K. (2020). Coronavirus stellt nationale und internationale Wirtschaftspolitik vor große Herausforderungen. *ÖGfE Policy Brief*, (11).
+
+Kommer, G. (2007). Souverän investieren mit Indexfonds, Indexzertifikaten und ETFs: wie Privatanleger das Spiel gegen die Finanzbranche gewinnen. *Campus Verlag*.
+
+Peterson, P. P. (1989). Event studies: A review of issues and methodology. *Quarterly journal of business and economics*, 36-66.
+
+
+# Appendix
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+###Germany
+DAX <- read.table("Alle Dateien (2)/DAX.csv", header = TRUE, sep = ",",stringsAsFactors=FALSE)
+
+DAX1 <- DAX[150:253,]
+n <- nrow(DAX1) 
+
+DAX1_Change <- log(DAX1[2:n, 5]) - log(DAX1[1:(n - 1),5])
+DAX1_Change <- format(round(DAX1_Change, 5), nsmall = 5)
+DAX1_Change <- as.numeric(DAX1_Change)
+DAX1$Change <- c(NA,DAX1_Change)
+
+
+
+ggplot(DAX1, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("DAX") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(DAX, Date == "2020-03-16"), # filter data source
+             aes(xintercept = Date),
+             size = 2, colour = "red")
+
+ggplot(DAX1, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("DAX") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(DAX, Date == "2020-03-23"), # filter data source
+             aes(xintercept = Date),
+             size = 2, colour = "red")
+
+## China
+
+China <- read.table("Alle Dateien (2)/China.csv", header = TRUE, sep = ",",stringsAsFactors=FALSE)
+
+China1 <- China[150:245,]
+n <- nrow(China1) 
+China1$Close <- as.numeric(China1$Close)
+
+China1_Change <- log(China1[2:n, 5]) - log(China1[1:(n - 1),5])
+China1_Change <- format(round(China1_Change, 5), nsmall = 5)
+China1_Change <- as.numeric(China1_Change)
+China1$Change <- c(NA,China1_Change)
+
+ggplot(China1, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("Chinese_index_Travel_Ban") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(China1, Date == "2020-03-30"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+### France
+
+France <- read.table("Alle Dateien (2)/CAC40.csv", header = TRUE, sep = ",",stringsAsFactors=FALSE)
+
+France1 <- France[150:258,]
+n <- nrow(France1) 
+France1$Close <- as.numeric(France1$Close)
+
+France1_Change <- log(France1[2:n, 5]) - log(France1[1:(n - 1),5])
+France1_Change <- format(round(France1_Change, 5), nsmall = 5)
+France1_Change <- as.numeric(France1_Change)
+France1$Change <- c(NA,France1_Change)
+
+ggplot(France1, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("CAC40_Lockdown") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(France1, Date == "2020-04-06"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+ggplot(France1, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("CAC40_Travel_Ban") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(France1, Date == "2020-04-06"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+### Japan
+Japan <- read.table("Alle Dateien (2)/Nikkei225.csv", header = TRUE, sep = ",",stringsAsFactors=FALSE)
+
+Nikkei <- Japan[145:244,]
+n <- nrow(Nikkei) 
+Nikkei$Close <- as.numeric(Nikkei$Close)
+
+Change <- log(Nikkei[2:n, 5]) - log(Nikkei[1:(n - 1),5])
+Change <- format(round(Change, 5), nsmall = 5)
+Change <- as.numeric(Change)
+Nikkei$Change <- c(NA,Change)
+
+ggplot(Nikkei, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("Nikkei_Travel_Ban") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(France1, Date == "2020-02-03"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+
+### South Korea
+
+ggplot(Sok, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("South_Korea_travel_ban") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Sok, Date == "2020-04-13"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+### USA
+
+ggplot(Dow, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("Dowjones_Lockdown") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Dow, Date == "2020-03-19"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+### Australia
+
+ggplot(Aus, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("Australia_quarantine") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Aus, Date == "2020-03-16"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+ggplot(Aus, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("Australia_Travel_Ban") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Aus, Date == "2020-03-20"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+## India
+
+ggplot(Ind, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("India_Lockdown") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Ind, Date == "2020-03-25"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+## Russia
+
+ggplot(Rus, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("Russia_Lockdown") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Rus, Date == "2020-03-30"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+### Spain
+Spain <- read.table("Alle Dateien (2)/Spanien.csv", header = TRUE, sep = ",",stringsAsFactors=FALSE)
+
+Sp <- Spain[150:258,]
+n <- nrow(Sp) 
+Sp$Close <- as.numeric(Sp$Close)
+
+Change <- log(Sp[2:n, 5]) - log(Sp[1:(n - 1),5])
+Change <- format(round(Change, 5), nsmall = 5)
+Change <- as.numeric(Change)
+Sp$Change <- c(NA,Change)
+
+ggplot(Sp, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("Spain_Travel_Ban") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Sp, Date == "2020-03-17"), 
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+ggplot(Sp, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("Spain_Lockdown") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Sp, Date == "2020-03-16"), # filter data source
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+
+### Sweden
+Sweden <- read.table("Alle Dateien (2)/Schweden.csv", header = TRUE, sep = ",",stringsAsFactors=FALSE)
+
+Swe <- Sweden[150:248,]
+n <- nrow(Swe) 
+Swe$Close <- as.numeric(Swe$Close)
+
+Change <- log(Swe[2:n, 5]) - log(Swe[1:(n - 1),5])
+Change <- format(round(Change, 5), nsmall = 5)
+Change <- as.numeric(Change)
+Swe$Change <- c(NA,Change)
+
+ggplot(Swe, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("Sweden_Travel_Ban") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Swe, Date == "2020-03-16"), 
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+
+### Israel
+Israel <- read.table("Alle Dateien (2)/Israel.csv", header = TRUE, sep = ",",stringsAsFactors=FALSE)
+
+Isr <- Israel[150:244,]
+n <- nrow(Isr) 
+Isr$Close <- as.numeric(Isr$Close)
+
+Change <- log(Isr[2:n, 5]) - log(Isr[1:(n - 1),5])
+Change <- format(round(Change, 5), nsmall = 5)
+Change <- as.numeric(Change)
+Isr$Change <- c(NA,Change)
+
+ggplot(Isr, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("Israel_Quarantine") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Swe, Date == "2020-03-09"), 
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+ggplot(Isr, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("Israel_Travel_Ban") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Swe, Date == "2020-03-12"), 
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+
+ggplot(Isr, aes(x = Date, y = Close, group = 1)) + geom_line(color = "darkblue") +
+  ggtitle("Israel_Lockdown") +
+  theme(plot.title = element_text(hjust = 0.5), text = element_text(size=7)) + 
+  geom_vline(data = subset(Swe, Date == "2020-04-02"), 
+             aes(xintercept = Date),
+             size = 1.2, colour = "red")
+```
